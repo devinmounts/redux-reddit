@@ -4,12 +4,13 @@ describe('postListReducer', () => {
 
   let action;
   const samplePostData = {
-    creator:  'Devin & Matt',
+    0: {creator:  'Devin & Matt',
     title: 'Flourescent Lights steal Vitamin D',
     details: 'Get Outside Fool',
     timeStamp: '09/17/2018',
     votes: 0,
-    id: 0
+    id: 0}
+
   };
 
   test('Should return default state if no action type is recognized', () => {
@@ -17,7 +18,7 @@ describe('postListReducer', () => {
   });
 
   test('Should successfully add new post data to masterPostList', () => {
-    const { creator, title, details, timeStamp, votes, id } = samplePostData;
+    const { creator, title, details, timeStamp, votes, id } = samplePostData[0];
     action = {
       type: 'ADD_POST',
       creator: creator,
@@ -40,13 +41,9 @@ describe('postListReducer', () => {
   });
 
   test('Should successfully increment votes on post', () => {
-    const { creator, title, details, timeStamp, votes, id } = samplePostData;
+    const { creator, title, details, timeStamp, votes, id } = samplePostData[0];
     action = {
       type: 'UP_VOTE',
-      creator: creator,
-      title: title,
-      details: details,
-      timeStamp: timeStamp,
       votes: votes,
       id: id
     };
@@ -57,6 +54,25 @@ describe('postListReducer', () => {
         details: details,
         timeStamp: timeStamp,
         votes: 1,
+        id: id
+      }
+    })
+  });
+
+  test('Should successfully decrement votes on post', () => {
+    const { creator, title, details, timeStamp, votes, id } = samplePostData[0];
+    action = {
+      type: 'DOWN_VOTE',
+      votes: votes,
+      id: id
+    };
+    expect(postListReducer(samplePostData, action)).toEqual({
+      [id]: {
+        creator: creator,
+        title: title,
+        details: details,
+        timeStamp: timeStamp,
+        votes: -1,
         id: id
       }
     })

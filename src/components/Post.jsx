@@ -8,8 +8,8 @@ function Post(props){
     const { dispatch } = props
     const action = {
       type: 'UP_VOTE',
-      id: props.id,
-      votes: props.votes
+      votes: props.votes,
+      id: props.id
     };
     dispatch(action);
   }
@@ -18,8 +18,8 @@ function Post(props){
     const { dispatch } = props
     const action = {
       type: 'DOWN_VOTE',
-      id: props.id,
-      votes: props.votes
+      votes: props.votes,
+      id: props.id
     };
     dispatch(action);
   }
