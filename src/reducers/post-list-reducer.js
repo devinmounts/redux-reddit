@@ -20,7 +20,6 @@ export default (state = {}, action) => {
        });
       return newState;
     case 'UP_VOTE':
-    console.log('enter Up_vote')
       newVotes = state[action.id].votes + 1;
       newPostsByIdEntry = Object.assign({}, state[action.id], {
         votes: newVotes
@@ -29,7 +28,16 @@ export default (state = {}, action) => {
         [action.id]: newPostsByIdEntry
       });
       return newPostsByIdStateSlice;
-  default:
+    case 'DOWN_VOTE':
+      newVotes = state[action.id].votes - 1;
+      newPostsByIdEntry = Object.assign({}, state[action.id], {
+        votes: newVotes
+      });
+      newPostsByIdStateSlice = Object.assign({}, state, {
+        [action.id]: newPostsByIdEntry
+      });
+      return newPostsByIdStateSlice;
+   default:
     return state;
   }
 };

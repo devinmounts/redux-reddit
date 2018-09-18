@@ -3,7 +3,6 @@ import Post from './Post';
 import PropTypes from 'prop-types';
 
 function PostList(props){
-  console.log(props);
   return (
     <div>
       <hr/>

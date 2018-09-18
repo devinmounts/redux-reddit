@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 function Post(props){
-  console.log(props)
 
-  function handleUpVote(objectToUpdate){
-    console.log('Like');
+  function handleUpVote(){
     const { dispatch } = props
     const action = {
       type: 'UP_VOTE',
@@ -14,7 +12,16 @@ function Post(props){
       votes: props.votes
     };
     dispatch(action);
-    console.log(action);
+  }
+
+  function handleDownVote(){
+    const { dispatch } = props
+    const action = {
+      type: 'DOWN_VOTE',
+      id: props.id,
+      votes: props.votes
+    };
+    dispatch(action);
   }
   return(
     <div>
@@ -23,6 +30,9 @@ function Post(props){
       <p>{props.timeStamp}</p>
       <p><strong>{props.votes}</strong></p>
       <button onClick={handleUpVote}>Like</button>
+      <button onClick={handleDownVote}>Dislike</button>
+
+
     </div>
   );
 }

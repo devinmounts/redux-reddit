@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 const store = createStore(postListReducer);
 
 let unsubscribe = store.subscribe(() => {
-  console.log('index store ' + store.getState());
+  // console.log('index store ' + store.getState());
 });
 
 

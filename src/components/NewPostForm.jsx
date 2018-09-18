@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { v4 } from 'uuid';
 
 function NewPostForm(props) {
-  console.log(props);
   let _creator = null;
   let _title = null;
   let _details = null;
